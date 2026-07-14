@@ -299,19 +299,91 @@ p{ margin:0; }
   .gallery{ column-count:3; }
   .contact-inner{ grid-template-columns:1fr; gap:3rem; }
 }
+/* ============ MOBILE MEDIA QUERY (ONLY FOR PHONES) ============ */
 @media (max-width: 700px){
-  .main-nav{
-    position:fixed; top:66px; left:0; right:0;
-    background:var(--linen); border-bottom:1px solid var(--line);
-    flex-direction:column; padding:1rem 1.5rem; gap:0;
-    transform:translateY(-110%); transition:transform .25s ease;
+  /* 1. Make sure the header bar is the parent guide for the dropdown positioning */
+  .site-header {
+    position: sticky;
+    top: 0;
   }
-  .main-nav.open{ transform:translateY(0); }
-  .main-nav a{ padding:0.85rem 0; border-bottom:1px solid var(--line); }
-  .nav-toggle{ display:flex; }
-  .header-call{ display:none; }
-  .value-grid{ grid-template-columns:1fr; }
-  .gallery{ column-count:2; }
-  .hero{ min-height:82vh; }
-  .lb-nav{ font-size:2.2rem; }
+
+  /* 2. Position the dropdown EXACTLY at the bottom edge of the header (top: 100%) */
+  .main-nav{
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    right: 0;
+    background: var(--linen); 
+    border-bottom: 1px solid var(--line);
+    flex-direction: column; 
+    padding: 1rem 1.5rem; 
+    gap: 0;
+    z-index: 39;
+    
+    /* Offscreen transition state */
+    transform: translateY(-120%); 
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .25s ease, opacity .25s ease;
+    
+    /* Scrollable fallback for small screens */
+    max-height: calc(100vh - 100%);
+    overflow-y: auto;
+    box-shadow: 0 12px 24px rgba(30,27,24,0.08);
+  }
+  
+  /* 3. Dropdown Open State */
+  .main-nav.open{ 
+    transform: translateY(0); 
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* Mobile Link Spacing */
+  .main-nav a{ 
+    padding: 0.85rem 0; 
+    border-bottom: 1px solid var(--line); 
+    width: 100%;
+    display: block;
+  }
+  .main-nav a:last-child {
+    border-bottom: none; /* Clean finish on the last item */
+  }
+  
+  /* 4. Hamburger Menu Icon & X Animation */
+  .nav-toggle{ 
+    display: flex; 
+    flex-direction: column; 
+    gap: 5px; 
+    background: none; 
+    border: none; 
+    cursor: pointer; 
+    padding: 6px; 
+    z-index: 45;
+  }
+  .nav-toggle span{ 
+    width: 22px; 
+    height: 2px; 
+    background: var(--ink); 
+    display: block; 
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  /* When the dropdown is OPEN, turn the hamburger lines into an "X" */
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Rest of your original responsive styles untouched */
+  .header-call{ display: none; }
+  .value-grid{ grid-template-columns: 1fr; }
+  .gallery{ column-count: 2; }
+  .hero{ min-height: 82vh; }
+  .lb-nav{ font-size: 2.2rem; }
 }
