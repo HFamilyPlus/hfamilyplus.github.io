@@ -104,7 +104,17 @@ p{ margin:0; }
 .brand{ display:flex; align-items:center; gap:0.65rem; margin-right:auto; }
 .brand-logo{ width:38px; height:38px; border-radius:50%; object-fit:cover; border:1px solid var(--line); }
 .brand-name{ font-family:var(--font-display); font-weight:600; font-size:1.1rem; letter-spacing:0.01em; }
-.main-nav{ display:flex; gap:1.75rem; }
+
+/* Desktop Navigation - Resetting behavior to prevent mobile leak */
+.main-nav{ 
+  display:flex; 
+  gap:1.75rem; 
+  position: static;      /* Prevents absolute positioning on desktop */
+  transform: none;       /* Resets mobile transform slide-up */
+  opacity: 1;            /* Ensures it is always visible on desktop */
+  pointer-events: auto;  /* Ensures links are clickable */
+}
+
 .main-nav a{
   font-size:0.92rem; font-weight:500; color:var(--ink);
   position:relative; padding:0.25rem 0;
@@ -117,7 +127,6 @@ p{ margin:0; }
 .main-nav a:hover::after{ transform:scaleX(1); }
 .nav-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; }
 .nav-toggle span{ width:22px; height:2px; background:var(--ink); display:block; }
-
 /* ============ HERO ============ */
 .hero{
   position:relative;
