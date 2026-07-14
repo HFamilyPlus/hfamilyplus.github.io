@@ -112,20 +112,31 @@
     if (e.key === "ArrowLeft") showPrev();
   });
 
-  // ---- Mobile nav toggle ----
+ // ---- Mobile nav toggle & smart close ----
   var navToggle = document.getElementById("nav-toggle");
   var mainNav = document.getElementById("main-nav");
 
-  navToggle.addEventListener("click", function () {
+  // Toggle open/close
+  navToggle.addEventListener("click", function (e) {
+    e.stopPropagation(); // Prevents immediate close trigger
     var isOpen = mainNav.classList.toggle("open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
+  // Close menu when clicking a link
   mainNav.querySelectorAll("a").forEach(function (link) {
     link.addEventListener("click", function () {
       mainNav.classList.remove("open");
       navToggle.setAttribute("aria-expanded", "false");
     });
+  });
+
+  // Close menu if user clicks anywhere outside of the nav menu
+  document.addEventListener("click", function (e) {
+    if (!mainNav.contains(e.target) && e.target !== navToggle) {
+      mainNav.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }
   });
 
   // ---- Footer year ----
