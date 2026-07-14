@@ -37,7 +37,15 @@
     tag.className = "gallery-tag";
     tag.textContent = "No. " + num;
 
+    var overlay = document.createElement("span");
+    overlay.className = "gallery-overlay";
+    overlay.innerHTML =
+      '<span class="gallery-view">' +
+      '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>' +
+      "View</span>";
+
     item.appendChild(img);
+    item.appendChild(overlay);
     item.appendChild(tag);
     gallery.appendChild(item);
   }
