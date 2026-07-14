@@ -33,20 +33,36 @@
       if (tile) tile.remove();
     };
 
+    // Darkening scrim so the tag/button stay legible over any photo
+    var scrim = document.createElement("span");
+    scrim.className = "gallery-scrim";
+    scrim.setAttribute("aria-hidden", "true");
+
+    // Corner-bracket frame accent, appears on hover (desktop) as a small craftsmanship touch
+    var frame = document.createElement("span");
+    frame.className = "gallery-frame";
+    frame.setAttribute("aria-hidden", "true");
+    frame.innerHTML = "<span></span><span></span><span></span><span></span>";
+
+    // Item-number tag — always visible, since it's needed to reference the piece by phone
     var tag = document.createElement("span");
     tag.className = "gallery-tag";
     tag.textContent = "No. " + num;
 
-    var overlay = document.createElement("span");
-    overlay.className = "gallery-overlay";
-    overlay.innerHTML =
-      '<span class="gallery-view">' +
-      '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>' +
-      "View</span>";
+    // View button — bottom-right, subtle by default, blooms brass on hover/tap
+    var viewBtn = document.createElement("span");
+    viewBtn.className = "gallery-view-btn";
+    viewBtn.setAttribute("aria-hidden", "true");
+    viewBtn.innerHTML =
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+      '<circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>' +
+      "</svg>";
 
     item.appendChild(img);
-    item.appendChild(overlay);
+    item.appendChild(scrim);
+    item.appendChild(frame);
     item.appendChild(tag);
+    item.appendChild(viewBtn);
     gallery.appendChild(item);
   }
 
@@ -112,7 +128,7 @@
     if (e.key === "ArrowLeft") showPrev();
   });
 
- // ---- Mobile nav toggle & smart close ----
+  // ---- Mobile nav toggle & smart close ----
   var navToggle = document.getElementById("nav-toggle");
   var mainNav = document.getElementById("main-nav");
 
