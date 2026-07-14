@@ -101,10 +101,20 @@ p{ margin:0; }
   align-items:center;
   gap:1.5rem;
 }
-/* 1. We keep margin-right: auto on the brand to push everything else to the right */
-.brand{ display:flex; align-items:center; gap:0.65rem; margin-right:auto; }
+.brand{ 
+  display:flex; 
+  align-items:center; 
+  gap:0.65rem; 
+  /* Removed margin-right: auto to let the logo and text sit naturally */
+}
 .brand-logo{ width:38px; height:38px; border-radius:50%; object-fit:cover; border:1px solid var(--line); }
-.brand-name{ font-family:var(--font-display); font-weight:600; font-size:1.1rem; letter-spacing:0.01em; }
+.brand-name{ 
+  font-family:var(--font-display); 
+  font-weight:600; 
+  font-size:1.1rem; 
+  letter-spacing:0.01em; 
+  white-space: nowrap; /* Forces "H Family Plus" to ALWAYS stay on a single line */
+}
 
 /* Desktop Navigation */
 .main-nav{ 
@@ -114,7 +124,8 @@ p{ margin:0; }
   transform: none;       
   opacity: 1;            
   pointer-events: auto;  
-  margin-right: 0.5rem; /* 2. Adds a small, clean gap between the menu and the Call button */
+  /* This pushes the navigation AND everything after it to the far right side */
+  margin-left: auto; 
 }
 
 .main-nav a{
