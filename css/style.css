@@ -370,7 +370,7 @@ p{ margin:0; }
   .brand-logo{ width:32px; height:32px; }
   .brand-name{ font-size:1rem; }
   .main-nav{
-    position:fixed; top:60px; left:0; right:0;
+    position:fixed; top:100px; left:0; right:0;
     z-index:39;
     background:var(--linen); border-bottom:1px solid var(--line);
     flex-direction:column; padding:1rem 1.5rem; gap:0;
