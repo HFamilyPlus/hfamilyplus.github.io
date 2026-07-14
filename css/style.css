@@ -99,13 +99,13 @@ p{ margin:0; }
   padding:0.85rem 1.5rem;
   display:flex;
   align-items:center;
-  gap:1.5rem;
+  gap:1.5rem; /* This controls the gap between the menu and the Call button */
 }
 .brand{ 
   display:flex; 
   align-items:center; 
   gap:0.65rem; 
-  /* Removed margin-right: auto to let the logo and text sit naturally */
+  flex-shrink:0; /* Prevents the logo and brand name from ever shrinking */
 }
 .brand-logo{ width:38px; height:38px; border-radius:50%; object-fit:cover; border:1px solid var(--line); }
 .brand-name{ 
@@ -113,19 +113,18 @@ p{ margin:0; }
   font-weight:600; 
   font-size:1.1rem; 
   letter-spacing:0.01em; 
-  white-space: nowrap; /* Forces "H Family Plus" to ALWAYS stay on a single line */
+  white-space:nowrap; /* Keeps "H Family Plus" on a single line next to the logo */
 }
 
 /* Desktop Navigation */
 .main-nav{ 
   display:flex; 
-  gap:1.75rem; 
-  position: static;      
-  transform: none;       
-  opacity: 1;            
-  pointer-events: auto;  
-  /* This pushes the navigation AND everything after it to the far right side */
-  margin-left: auto; 
+  gap:1.75rem; /* This is the tight spacing between Collection, About, and Contact */
+  position:static;      
+  transform:none;       
+  opacity:1;            
+  pointer-events:auto;  
+  margin-left:auto; /* This pushes the menu AND the call button together to the far right */
 }
 
 .main-nav a{
