@@ -1,457 +1,141 @@
-/* =========================================================
-   H FAMILY PLUS — tokens
-   ink: charcoal-brown background
-   walnut: warm wood brown, primary
-   brass: gold accent, signature colour
-   linen: warm off-white
-   ========================================================= */
-:root{
-  --ink: #1E1B18;
-  --ink-soft: #2A2521;
-  --walnut: #6B4226;
-  --walnut-light: #8B5A3C;
-  --brass: #C08A28;
-  --brass-light: #D9A94B;
-  --linen: #F3EDE4;
-  --linen-dim: #E7DDCC;
-  --line: rgba(30,27,24,0.12);
-  --line-light: rgba(243,237,228,0.18);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>H Family Plus — Seating &amp; Furniture</title>
+<meta name="description" content="H Family Plus — quality chairs built to last. Browse the collection and get in touch for a quote.">
+<link rel="icon" href="assets/logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-  --font-display: "Fraunces", serif;
-  --font-body: "Work Sans", sans-serif;
-  --font-tag: "Space Mono", monospace;
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a class="brand" href="#top">
+      <img src="assets/logo.jpeg" alt="H Family Plus logo" class="brand-logo">
+      <span class="brand-name">H Family&nbsp;Plus</span>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <a href="#collection">Collection</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-call header-call" href="tel:0200766321">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call now
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-  --max: 1180px;
-}
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-media">
+    <img src="images/image-001.jpeg" alt="Featured chair from the H Family Plus collection">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="eyebrow">Ghana&nbsp;•&nbsp;Made to sit well, built to last</p>
+    <h1>Seating that <em>elevates</em><br>every room.</h1>
+    <p class="hero-sub">From dining chairs to statement pieces, H Family Plus brings lasting durability and timeless style to your home &mdash; the same craftsmanship promise behind everything we make.</p>
+    <div class="hero-actions">
+      <a href="#collection" class="btn btn-brass">View the collection</a>
+      <a href="tel:0200766321" class="btn btn-outline">Call 020 076 6321</a>
+    </div>
+  </div>
+  <a href="#collection" class="scroll-cue" aria-label="Scroll to collection">
+    <span></span>
+  </a>
+</section>
 
-*{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-html, body{ max-width:100%; overflow-x:hidden; }
-body{
-  margin:0;
-  background:var(--linen);
-  color:var(--ink);
-  font-family:var(--font-body);
-  font-size:16px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-img{ max-width:100%; display:block; }
-a{ color:inherit; text-decoration:none; }
-h1,h2,h3{ font-family:var(--font-display); margin:0; font-weight:600; }
-p{ margin:0; }
-@media (prefers-reduced-motion: reduce){
-  *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
-}
-:focus-visible{ outline:2px solid var(--brass); outline-offset:3px; }
+<!-- ============ VALUE PROPS ============ -->
+<section class="values" id="about">
+  <div class="values-inner">
+    <p class="section-tag">No. 01 &mdash; Why H Family Plus</p>
+    <h2>Every chair earns its place.</h2>
+    <div class="value-grid">
+      <div class="value-card">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 40V18l14-10 14 10v22"/><path d="M16 40V26h16v14"/><path d="M10 26h28"/></svg>
+        <h3>Solid craftsmanship</h3>
+        <p>Every piece is finished by hand, joint by joint, so it holds up to real daily use &mdash; not just a showroom floor.</p>
+      </div>
+      <div class="value-card">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 4l16 8v12c0 10-7 17-16 20-9-3-16-10-16-20V12z"/></svg>
+        <h3>Built to last</h3>
+        <p>Sturdy frames and quality materials mean these chairs are still standing years after the first sit.</p>
+      </div>
+      <div class="value-card">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 34h8V14a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v20h8"/><circle cx="16" cy="38" r="4"/><circle cx="32" cy="38" r="4"/></svg>
+        <h3>Delivered to you</h3>
+        <p>Order by call or WhatsApp and we'll arrange delivery &mdash; simple as that.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-.section-tag{
-  font-family:var(--font-tag);
-  font-size:0.78rem;
-  letter-spacing:0.06em;
-  text-transform:uppercase;
-  color:var(--walnut);
-  margin-bottom:0.9rem;
-  display:block;
-}
-.section-tag-light{ color:var(--brass-light); }
+<!-- ============ COLLECTION / GALLERY ============ -->
+<section class="collection" id="collection">
+  <div class="collection-head">
+    <p class="section-tag">No. 02 &mdash; The Collection</p>
+    <h2>Browse the pieces</h2>
+    <p class="collection-sub">Tap any chair to see it larger. Ask us the item number when you call &mdash; it's tagged on every photo.</p>
+  </div>
+  <div class="gallery" id="gallery"><!-- populated by script.js --></div>
+</section>
 
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:0.5rem;
-  padding:0.85rem 1.6rem;
-  border-radius:2px;
-  font-family:var(--font-body);
-  font-weight:600;
-  font-size:0.95rem;
-  letter-spacing:0.01em;
-  border:1px solid transparent;
-  cursor:pointer;
-  transition:transform .18s ease, background-color .18s ease, color .18s ease, border-color .18s ease;
-}
-.btn:hover{ transform:translateY(-1px); }
-.btn-brass{ box-shadow:0 6px 18px rgba(192,138,40,0.28); }
-.btn-brass:hover{ box-shadow:0 8px 22px rgba(192,138,40,0.38); }
-.btn-brass{ background:var(--brass); color:var(--ink); }
-.btn-brass:hover{ background:var(--brass-light); }
-.btn-outline{ border-color:var(--line-light); color:var(--linen); }
-.btn-outline:hover{ background:rgba(243,237,228,0.08); }
-.btn-call{ background:var(--walnut); color:var(--linen); padding:0.6rem 1.15rem; font-size:0.88rem; }
-.btn-call:hover{ background:var(--walnut-light); }
-.btn-call svg{ flex-shrink:0; }
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="contact-inner contact-inner-single">
+    <div class="contact-copy">
+      <p class="section-tag section-tag-light">No. 03 &mdash; Get in touch</p>
+      <h2>Ready to order,<br>or just have a question?</h2>
+      <p class="contact-lede">Call or WhatsApp us directly &mdash; mention the item number and we'll sort out pricing, colours and delivery.</p>
+      <div class="contact-methods">
+        <a class="contact-method" href="tel:0200766321">
+          <span class="cm-label">Call</span>
+          <span class="cm-value">020 076 6321</span>
+        </a>
+        <a class="contact-method" href="tel:0247521989">
+          <span class="cm-label">Call</span>
+          <span class="cm-value">024 752 1989</span>
+        </a>
+        <a class="contact-method" href="https://wa.me/233200766321" target="_blank" rel="noopener">
+          <span class="cm-label">WhatsApp</span>
+          <span class="cm-value">Chat with us</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-/* ============ HEADER ============ */
-.site-header{
-  position:sticky; top:0; z-index:40;
-  border-bottom:1px solid var(--line);
-}
-.site-header::before{
-  content:"";
-  position:absolute; inset:0;
-  background:rgba(243,237,228,0.92);
-  backdrop-filter:blur(8px);
-  z-index:-1;
-}
-.header-inner{
-  max-width:var(--max);
-  margin:0 auto;
-  padding:0.85rem 1.5rem;
-  display:flex;
-  align-items:center;
-  gap:1.5rem;
-}
-.brand{ display:flex; align-items:center; gap:0.65rem; margin-right:auto; }
-.brand-logo{ width:38px; height:38px; border-radius:50%; object-fit:cover; border:1px solid var(--line); }
-.brand-name{ font-family:var(--font-display); font-weight:600; font-size:1.1rem; letter-spacing:0.01em; }
-.main-nav{ display:flex; gap:1.75rem; }
-.main-nav a{
-  font-size:0.92rem; font-weight:500; color:var(--ink);
-  position:relative; padding:0.25rem 0;
-}
-.main-nav a::after{
-  content:""; position:absolute; left:0; right:0; bottom:-2px; height:2px;
-  background:var(--brass); transform:scaleX(0); transform-origin:left;
-  transition:transform .2s ease;
-}
-.main-nav a:hover::after{ transform:scaleX(1); }
-.nav-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; }
-.nav-toggle span{ width:22px; height:2px; background:var(--ink); display:block; }
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a class="brand brand-footer" href="#top">
+      <img src="assets/logo.jpeg" alt="H Family Plus logo" class="brand-logo">
+      <span class="brand-name">H Family&nbsp;Plus</span>
+    </a>
+    <p class="footer-tag">Seating &amp; furniture, built to last.</p>
+    <p class="footer-copy">&copy; <span id="year"></span> H Family Plus. All rights reserved.</p>
+  </div>
+</footer>
 
-/* ============ HERO ============ */
-.hero{
-  position:relative;
-  min-height:88vh;
-  display:flex;
-  align-items:flex-end;
-  overflow:hidden;
-  background:var(--ink);
-}
-.hero-media{ position:absolute; inset:0; }
-.hero-media img{ width:100%; height:100%; object-fit:cover; opacity:0.6; filter:saturate(1.05) contrast(1.04); }
-.hero-overlay{
-  position:absolute; inset:0;
-  background:
-    radial-gradient(120% 90% at 50% 0%, rgba(30,27,24,0) 40%, rgba(30,27,24,0.55) 100%),
-    linear-gradient(0deg, var(--ink) 8%, rgba(30,27,24,0.35) 55%, rgba(30,27,24,0.12) 100%);
-}
-.hero-content{
-  position:relative;
-  z-index:2;
-  max-width:var(--max);
-  margin:0 auto;
-  padding:6rem 1.5rem 4.5rem;
-  width:100%;
-  color:var(--linen);
-}
-.eyebrow{
-  font-family:var(--font-tag);
-  font-size:0.8rem;
-  letter-spacing:0.06em;
-  text-transform:uppercase;
-  color:var(--brass-light);
-  margin-bottom:1.25rem;
-}
-.hero h1{
-  font-size:clamp(2.6rem, 6vw, 4.6rem);
-  line-height:1.05;
-  max-width:14ch;
-  color:var(--linen);
-}
-.hero h1 em{ color:var(--brass-light); font-style:normal; }
-.hero-sub{
-  margin-top:1.5rem;
-  max-width:46ch;
-  font-size:1.05rem;
-  color:var(--linen-dim);
-}
-.hero-actions{ display:flex; gap:1rem; margin-top:2.25rem; flex-wrap:wrap; }
-.scroll-cue{
-  position:absolute; bottom:1.8rem; left:50%; transform:translateX(-50%);
-  z-index:2; width:1px; height:44px;
-}
-.scroll-cue span{
-  display:block; width:1px; height:100%; background:var(--brass-light);
-  position:relative; animation:scrollpulse 1.8s ease-in-out infinite;
-}
-@keyframes scrollpulse{
-  0%{ transform:scaleY(0); transform-origin:top; }
-  50%{ transform:scaleY(1); transform-origin:top; }
-  51%{ transform-origin:bottom; }
-  100%{ transform:scaleY(0); transform-origin:bottom; }
-}
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+  <img src="" alt="" id="lb-image" class="lb-image">
+  <button class="lb-nav lb-next" id="lb-next" aria-label="Next">&#8250;</button>
+  <p class="lb-caption" id="lb-caption"></p>
+</div>
 
-/* ============ VALUES ============ */
-.values{ padding:6rem 1.5rem; }
-.values-inner{ max-width:var(--max); margin:0 auto; }
-.values h2{ font-size:clamp(1.9rem,3.4vw,2.6rem); max-width:16ch; margin-bottom:3rem; }
-.value-grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:2.5rem;
-}
-.value-card{
-  border-top:1px solid var(--line);
-  padding-top:1.5rem;
-}
-.value-card svg{
-  width:38px; height:38px; color:var(--brass); margin-bottom:1.25rem;
-  padding:10px; box-sizing:content-box;
-  background:rgba(192,138,40,0.1);
-  border-radius:50%;
-}
-.value-card h3{ font-size:1.2rem; margin-bottom:0.6rem; }
-.value-card p{ color:#4a433c; font-size:0.96rem; }
-
-/* ============ COLLECTION / GALLERY ============ */
-.collection{ padding:2rem 1.5rem 6rem; background:var(--linen-dim); }
-.collection-head{ max-width:var(--max); margin:0 auto 2.5rem; padding-top:4rem; }
-.collection-head h2{ font-size:clamp(1.9rem,3.4vw,2.6rem); }
-.collection-sub{ margin-top:0.9rem; max-width:52ch; color:#4a433c; }
-
-.gallery{
-  max-width:var(--max);
-  margin:0 auto;
-  column-count:4;
-  column-gap:1.1rem;
-}
-.gallery-item{
-  position:relative;
-  break-inside:avoid;
-  margin-bottom:1.1rem;
-  overflow:hidden;
-  cursor:pointer;
-  background:linear-gradient(135deg, #ddd2be 25%, #e6dcc8 37%, #ddd2be 63%);
-  background-size:400% 100%;
-  animation:shimmer 1.6s ease-in-out infinite;
-  border-radius:10px;
-  border:1px solid var(--line);
-  box-shadow:0 1px 2px rgba(30,27,24,0.04);
-  transition:box-shadow .3s ease, transform .3s ease;
-}
-.gallery-item:hover{
-  box-shadow:0 18px 34px -12px rgba(30,27,24,0.35);
-  transform:translateY(-3px);
-}
-@keyframes shimmer{
-  0%{ background-position:100% 0; }
-  100%{ background-position:0 0; }
-}
-.gallery-item img{
-  width:100%; display:block;
-  transition:transform .6s cubic-bezier(.22,.8,.32,1), filter .4s ease;
-  position:relative;
-  z-index:1;
-}
-.gallery-item img[src]{ animation:none; }
-.gallery-item:hover img{ transform:scale(1.06); filter:brightness(0.92) saturate(1.08); }
-.gallery-item::after{
-  content:"";
-  position:absolute; inset:0;
-  background:linear-gradient(0deg, rgba(30,27,24,0.55) 0%, rgba(30,27,24,0) 42%);
-  opacity:0;
-  transition:opacity .3s ease;
-  z-index:1;
-  pointer-events:none;
-}
-.gallery-item:hover::after{ opacity:1; }
-.gallery-tag{
-  position:absolute; top:0.7rem; left:0.7rem;
-  background:rgba(30,27,24,0.82);
-  backdrop-filter:blur(3px);
-  color:var(--brass-light);
-  font-family:var(--font-tag);
-  font-size:0.72rem;
-  padding:0.3rem 0.6rem;
-  border-radius:999px;
-  letter-spacing:0.03em;
-  opacity:0;
-  transform:translateY(-4px);
-  transition:opacity .2s ease, transform .2s ease;
-  z-index:2;
-}
-.gallery-item:hover .gallery-tag{ opacity:1; transform:translateY(0); }
-.gallery-overlay{
-  position:absolute; inset:0;
-  display:flex; align-items:flex-end; justify-content:flex-start;
-  padding:0.8rem;
-  z-index:2;
-  pointer-events:none;
-}
-.gallery-view{
-  display:inline-flex; align-items:center; gap:0.4rem;
-  background:var(--brass);
-  color:var(--ink);
-  font-family:var(--font-tag);
-  font-size:0.72rem;
-  letter-spacing:0.04em;
-  text-transform:uppercase;
-  padding:0.4rem 0.75rem;
-  border-radius:999px;
-  opacity:0;
-  transform:translateY(6px);
-  transition:opacity .25s ease, transform .25s ease;
-}
-.gallery-item:hover .gallery-view{ opacity:1; transform:translateY(0); }
-
-/* ============ CONTACT ============ */
-.contact{ background:var(--ink); color:var(--linen); padding:6rem 1.5rem; }
-.contact-inner{
-  max-width:var(--max); margin:0 auto;
-  display:grid;
-  grid-template-columns:1.3fr 1fr;
-  gap:4rem;
-  align-items:start;
-}
-.contact-inner-single{
-  grid-template-columns:1fr;
-  max-width:640px;
-}
-.contact-copy h2{ color:var(--linen); font-size:clamp(1.9rem,3.4vw,2.6rem); max-width:14ch; }
-.contact-lede{ margin-top:1.25rem; max-width:44ch; color:var(--linen-dim); }
-.contact-methods{ margin-top:2.25rem; display:flex; flex-direction:column; gap:0; max-width:360px; }
-.contact-method{
-  display:flex; justify-content:space-between; align-items:center;
-  padding:1rem 0; border-bottom:1px solid var(--line-light);
-  transition:padding-left .2s ease;
-}
-.contact-method:hover{ padding-left:0.4rem; color:var(--brass-light); }
-.cm-label{ font-family:var(--font-tag); font-size:0.78rem; text-transform:uppercase; color:var(--brass-light); }
-.cm-value{ font-family:var(--font-display); font-size:1.15rem; }
-
-/* ============ FOOTER ============ */
-.site-footer{ background:var(--ink); color:var(--linen-dim); border-top:1px solid var(--line-light); padding:2.5rem 1.5rem; }
-.footer-inner{ max-width:var(--max); margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:1rem 1.5rem; }
-.brand-footer .brand-name{ color:var(--linen); }
-.footer-tag{ font-size:0.88rem; margin-right:auto; }
-.footer-copy{ font-size:0.8rem; color:#8a8178; }
-
-/* ============ LIGHTBOX ============ */
-.lightbox{
-  position:fixed; inset:0; z-index:100;
-  background:rgba(20,17,15,0.94);
-  display:flex; align-items:center; justify-content:center;
-  flex-direction:column;
-  opacity:0; pointer-events:none;
-  transition:opacity .25s ease;
-}
-.lightbox.open{ opacity:1; pointer-events:auto; }
-.lb-image{ max-width:min(88vw, 900px); max-height:78vh; object-fit:contain; box-shadow:0 20px 60px rgba(0,0,0,0.5); border-radius:6px; }
-.lb-caption{ margin-top:1rem; font-family:var(--font-tag); color:var(--brass-light); font-size:0.85rem; }
-.lb-close{
-  position:absolute; top:1.5rem; right:1.5rem;
-  background:none; border:none; color:var(--linen); font-size:2rem;
-  cursor:pointer; line-height:1; padding:0.4rem;
-}
-.lb-nav{
-  position:absolute; top:50%; transform:translateY(-50%);
-  background:none; border:none; color:var(--linen); font-size:3rem;
-  cursor:pointer; padding:0.5rem 1rem; opacity:0.75;
-}
-.lb-nav:hover{ opacity:1; }
-.lb-prev{ left:0.5rem; }
-.lb-next{ right:0.5rem; }
-
-/* ============ RESPONSIVE ============ */
-
-/* Tablet */
-@media (max-width: 980px){
-  .value-grid{ grid-template-columns:repeat(2,1fr); }
-  .gallery{ column-count:3; }
-  .contact-inner{ grid-template-columns:1fr; gap:3rem; }
-  .values{ padding:4.5rem 1.5rem; }
-  .collection-head{ padding-top:3rem; }
-  .contact{ padding:5rem 1.5rem; }
-}
-
-/* Phones */
-@media (max-width: 700px){
-  .header-inner{ padding:0.7rem 1.25rem; gap:1rem; }
-  .brand-logo{ width:32px; height:32px; }
-  .brand-name{ font-size:1rem; }
-  
-  .main-nav{
-    position:fixed; top:60px; left:0; right:0;
-    z-index:39;
-    background:var(--linen); border-bottom:1px solid var(--line);
-    flex-direction:column; padding:1rem 1.5rem; gap:0;
-    
-    /* --- INTEGRATED FIXES --- */
-    transform:translateY(-120%); 
-    visibility:hidden;
-    pointer-events:none;
-    transition:transform .25s ease, visibility .25s ease;
-    /* ------------------------- */
-    
-    max-height:calc(100vh - 60px);
-    overflow-y:auto;
-    box-shadow:0 12px 24px rgba(30,27,24,0.12);
-  }
-  
-  .main-nav.open{ 
-    transform:translateY(0); 
-    visibility:visible;
-    pointer-events:auto;
-  }
-  
-  .main-nav a{ padding:0.9rem 0; border-bottom:1px solid var(--line); font-size:1rem; }
-  .nav-toggle{ display:flex; }
-  .header-call{ display:none; }
-
-  .hero{ min-height:auto; }
-  .hero-content{ padding:4rem 1.25rem 3rem; }
-  .hero h1{ max-width:none; }
-  .hero-sub{ max-width:none; }
-  .hero-actions{ flex-direction:column; align-items:stretch; }
-  .hero-actions .btn{ justify-content:center; }
-
-  .values{ padding:3.5rem 1.25rem; }
-  .values h2{ margin-bottom:2rem; }
-  .value-grid{ grid-template-columns:1fr; gap:2rem; }
-
-  .collection{ padding:0 1.25rem 3.5rem; }
-  .collection-head{ padding-top:2.5rem; margin-bottom:1.75rem; }
-  .gallery{ column-count:2; column-gap:0.8rem; }
-  .gallery-item{ margin-bottom:0.8rem; }
-
-  .contact{ padding:3.5rem 1.25rem; }
-  .contact-methods{ max-width:none; }
-
-  .footer-inner{ padding:0 0.25rem; }
-  .footer-tag{ width:100%; margin-right:0; order:3; }
-
-  .lb-nav{ font-size:2.2rem; padding:0.4rem 0.6rem; }
-  .lb-close{ top:1rem; right:1rem; font-size:1.75rem; }
-}
-
-/* Small phones */
-@media (max-width: 420px){
-  .header-inner{ padding:0.6rem 1rem; }
-  .brand-name{ font-size:0.92rem; }
-  .hero-content{ padding:3.25rem 1rem 2.25rem; }
-  .eyebrow{ font-size:0.72rem; }
-  .hero h1{ font-size:clamp(2.1rem, 9vw, 2.6rem); }
-  .hero-sub{ font-size:0.96rem; }
-  .btn{ padding:0.8rem 1.3rem; font-size:0.9rem; }
-  .values{ padding:2.75rem 1rem; }
-  .collection{ padding:0 1rem 2.75rem; }
-  .gallery{ column-count:2; column-gap:0.6rem; }
-  .gallery-item{ margin-bottom:0.6rem; border-radius:8px; }
-  .gallery-tag{ font-size:0.64rem; padding:0.24rem 0.5rem; }
-  .gallery-view{ font-size:0.64rem; padding:0.32rem 0.6rem; }
-  .contact{ padding:2.75rem 1rem; }
-  .contact-copy h2{ max-width:none; }
-  .cm-value{ font-size:1.02rem; }
-  .site-footer{ padding:2rem 1rem; }
-}
-
-/* Very small phones */
-@media (max-width: 340px){
-  .gallery{ column-count:1; }
-}
-
-/* Landscape phones with limited height */
-@media (max-height: 480px) and (max-width: 900px){
-  .hero{ min-height:auto; }
-  .hero-content{ padding:3rem 1.25rem 2.25rem; }
-}
+<script src="js/script.js"></script>
+</body>
+</html> 
