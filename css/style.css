@@ -301,13 +301,13 @@ p{ margin:0; }
 }
 /* ============ MOBILE MEDIA QUERY (ONLY FOR PHONES) ============ */
 @media (max-width: 700px){
-  /* 1. Make sure the header bar is the parent guide for the dropdown positioning */
+  /* Keep the header bar as the relative parent */
   .site-header {
     position: sticky;
     top: 0;
   }
 
-  /* 2. Position the dropdown EXACTLY at the bottom edge of the header (top: 100%) */
+  /* Position the dropdown directly below the header */
   .main-nav{
     position: absolute; 
     top: 100%; 
@@ -320,22 +320,23 @@ p{ margin:0; }
     gap: 0;
     z-index: 39;
     
-    /* Offscreen transition state */
+    /* 1. Hide state: Translate up, fade out, and completely disable visibility */
     transform: translateY(-120%); 
     opacity: 0;
-    pointer-events: none;
-    transition: transform .25s ease, opacity .25s ease;
+    visibility: hidden; /* This prevents the menu from showing over the header when closed */
+    pointer-events: none; 
+    transition: transform .25s ease, opacity .25s ease, visibility .25s ease;
     
-    /* Scrollable fallback for small screens */
     max-height: calc(100vh - 100%);
     overflow-y: auto;
     box-shadow: 0 12px 24px rgba(30,27,24,0.08);
   }
   
-  /* 3. Dropdown Open State */
+  /* 2. Open State: Slide down, fade in, and make visible */
   .main-nav.open{ 
     transform: translateY(0); 
     opacity: 1;
+    visibility: visible; /* Bring it back to life when open */
     pointer-events: auto;
   }
   
@@ -347,10 +348,10 @@ p{ margin:0; }
     display: block;
   }
   .main-nav a:last-child {
-    border-bottom: none; /* Clean finish on the last item */
+    border-bottom: none; 
   }
   
-  /* 4. Hamburger Menu Icon & X Animation */
+  /* Hamburger Menu Icon & X Animation */
   .nav-toggle{ 
     display: flex; 
     flex-direction: column; 
@@ -369,7 +370,7 @@ p{ margin:0; }
     transition: transform 0.25s ease, opacity 0.25s ease;
   }
 
-  /* When the dropdown is OPEN, turn the hamburger lines into an "X" */
+  /* Transform lines to "X" when open */
   .nav-toggle[aria-expanded="true"] span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
@@ -380,7 +381,7 @@ p{ margin:0; }
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* Rest of your original responsive styles untouched */
+  /* Original responsive styles untouched */
   .header-call{ display: none; }
   .value-grid{ grid-template-columns: 1fr; }
   .gallery{ column-count: 2; }
