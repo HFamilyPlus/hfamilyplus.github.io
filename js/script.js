@@ -46,7 +46,7 @@
   function buildGallery(products) {
     products.forEach(function (product, i) {
       var src = IMAGE_FOLDER + product.filename;
-      var tag = "No. " + product.number;
+      var tag = "ID " + product.number;
       images.push({ src: src, tag: tag });
 
       var item = document.createElement("div");
