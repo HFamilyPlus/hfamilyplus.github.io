@@ -1,69 +1,96 @@
 (function () {
   "use strict";
 
-  // ---- Config: how many product photos live in /images ----
-  // Files are expected to be named images/image-001.jpeg ... image-070.jpeg
-  var IMAGE_COUNT = 70;
   var IMAGE_FOLDER = "images/";
+  // Published Google Sheet, as CSV. File > Share > Publish to web in the sheet.
+  var MANIFEST_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTfYmTvz3umGcVBGbRfzbL_xRuAOpK8KdM-TE2x8ZA0gwnd5jwrdoHTROcRRWQ-sf13mgS0clLlyZa6/pub?gid=764475134&single=true&output=csv";
 
-  function padNumber(n) {
-    return String(n).padStart(3, "0");
+  var gallery = document.getElementById("gallery");
+  var images = []; // populated after fetch: [{src, tag}]
+
+  // ---- Minimal CSV parser (handles quoted fields with commas, per the export format) ----
+  function parseCSV(text) {
+    var rows = [];
+    var row = [];
+    var field = "";
+    var inQuotes = false;
+    for (var i = 0; i < text.length; i++) {
+      var c = text[i];
+      if (inQuotes) {
+        if (c === '"') {
+          if (text[i + 1] === '"') { field += '"'; i++; }
+          else { inQuotes = false; }
+        } else {
+          field += c;
+        }
+      } else {
+        if (c === '"') inQuotes = true;
+        else if (c === ",") { row.push(field); field = ""; }
+        else if (c === "\n") { row.push(field); rows.push(row); row = []; field = ""; }
+        else if (c === "\r") { /* skip */ }
+        else field += c;
+      }
+    }
+    if (field.length || row.length) { row.push(field); rows.push(row); }
+
+    var header = rows.shift().map(function (h) { return h.trim().toLowerCase(); });
+    return rows
+      .filter(function (r) { return r.length > 1 || (r[0] && r[0].trim()); })
+      .map(function (r) {
+        var obj = {};
+        header.forEach(function (key, idx) { obj[key] = (r[idx] || "").trim(); });
+        return obj;
+      });
   }
 
-  // ---- Build the gallery ----
-  var gallery = document.getElementById("gallery");
-  var images = [];
+  function buildGallery(products) {
+    products.forEach(function (product, i) {
+      var src = IMAGE_FOLDER + product.filename;
+      var tag = "No. " + product.number;
+      images.push({ src: src, tag: tag });
 
-  for (var i = 1; i <= IMAGE_COUNT; i++) {
-    var num = padNumber(i);
-    var src = IMAGE_FOLDER + "image-" + num + ".jpeg";
-    images.push({ src: src, tag: "No. " + num });
+      var item = document.createElement("div");
+      item.className = "gallery-item";
+      item.setAttribute("data-index", i);
 
-    var item = document.createElement("div");
-    item.className = "gallery-item";
-    item.setAttribute("data-index", i - 1);
+      var img = document.createElement("img");
+      img.src = src;
+      img.alt = product.alt || ("H Family Plus chair, item " + product.number);
+      img.loading = "lazy";
+      // If an image file is missing, quietly drop the tile instead of showing a broken icon
+      img.onerror = function () {
+        var tile = this.closest(".gallery-item");
+        if (tile) tile.remove();
+      };
 
-    var img = document.createElement("img");
-    img.src = src;
-    img.alt = "H Family Plus chair, item " + num;
-    img.loading = "lazy";
-    // If an image file is missing, quietly drop the tile instead of showing a broken icon
-    img.onerror = function () {
-      var tile = this.closest(".gallery-item");
-      if (tile) tile.remove();
-    };
+      var scrim = document.createElement("span");
+      scrim.className = "gallery-scrim";
+      scrim.setAttribute("aria-hidden", "true");
 
-    // Darkening scrim so the tag/button stay legible over any photo
-    var scrim = document.createElement("span");
-    scrim.className = "gallery-scrim";
-    scrim.setAttribute("aria-hidden", "true");
+      var frame = document.createElement("span");
+      frame.className = "gallery-frame";
+      frame.setAttribute("aria-hidden", "true");
+      frame.innerHTML = "<span></span><span></span><span></span><span></span>";
 
-    // Corner-bracket frame accent, appears on hover (desktop) as a small craftsmanship touch
-    var frame = document.createElement("span");
-    frame.className = "gallery-frame";
-    frame.setAttribute("aria-hidden", "true");
-    frame.innerHTML = "<span></span><span></span><span></span><span></span>";
+      var tagEl = document.createElement("span");
+      tagEl.className = "gallery-tag";
+      tagEl.textContent = tag;
 
-    // Item-number tag — always visible, since it's needed to reference the piece by phone
-    var tag = document.createElement("span");
-    tag.className = "gallery-tag";
-    tag.textContent = "No. " + num;
+      var viewBtn = document.createElement("span");
+      viewBtn.className = "gallery-view-btn";
+      viewBtn.setAttribute("aria-hidden", "true");
+      viewBtn.innerHTML =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+        '<circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>' +
+        "</svg>";
 
-    // View button — bottom-right, subtle by default, blooms brass on hover/tap
-    var viewBtn = document.createElement("span");
-    viewBtn.className = "gallery-view-btn";
-    viewBtn.setAttribute("aria-hidden", "true");
-    viewBtn.innerHTML =
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-      '<circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>' +
-      "</svg>";
-
-    item.appendChild(img);
-    item.appendChild(scrim);
-    item.appendChild(frame);
-    item.appendChild(tag);
-    item.appendChild(viewBtn);
-    gallery.appendChild(item);
+      item.appendChild(img);
+      item.appendChild(scrim);
+      item.appendChild(frame);
+      item.appendChild(tagEl);
+      item.appendChild(viewBtn);
+      gallery.appendChild(item);
+    });
   }
 
   // ---- Lightbox ----
@@ -93,7 +120,7 @@
     var data = images[currentIndex];
     if (!data) return;
     lbImage.src = data.src;
-    lbImage.alt = "H Family Plus chair, item " + data.tag.replace("No. ", "");
+    lbImage.alt = data.tag;
     lbCaption.textContent = data.tag;
   }
 
@@ -132,14 +159,12 @@
   var navToggle = document.getElementById("nav-toggle");
   var mainNav = document.getElementById("main-nav");
 
-  // Toggle open/close
   navToggle.addEventListener("click", function (e) {
-    e.stopPropagation(); // Prevents immediate close trigger
+    e.stopPropagation();
     var isOpen = mainNav.classList.toggle("open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  // Close menu when clicking a link
   mainNav.querySelectorAll("a").forEach(function (link) {
     link.addEventListener("click", function () {
       mainNav.classList.remove("open");
@@ -147,7 +172,6 @@
     });
   });
 
-  // Close menu if user clicks anywhere outside of the nav menu
   document.addEventListener("click", function (e) {
     if (!mainNav.contains(e.target) && e.target !== navToggle) {
       mainNav.classList.remove("open");
@@ -157,4 +181,25 @@
 
   // ---- Footer year ----
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  // ---- Load the product manifest from the published Google Sheet, then build the gallery ----
+  fetch(MANIFEST_URL, { cache: "no-store" })
+    .then(function (res) {
+      if (!res.ok) throw new Error("Could not load " + MANIFEST_URL);
+      return res.text();
+    })
+    .then(function (csvText) {
+      var rows = parseCSV(csvText);
+      var products = rows
+        .filter(function (r) { return r.filename; })
+        .map(function (r) {
+          return { number: r.number, filename: r.filename, alt: r.alt };
+        });
+      buildGallery(products);
+    })
+    .catch(function (err) {
+      console.error(err);
+      gallery.innerHTML =
+        '<p style="padding:2rem;color:#7a6f63;">Collection is being updated — please check back shortly.</p>';
+    });
 })();
